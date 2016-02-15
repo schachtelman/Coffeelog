@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Coffeelog</string>
+
+    <string name="title_section1">Log your coffee!</string>
+    <string name="title_section2">Stats</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
