@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ import android.widget.TextView;
 public class StatsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_SECTION_NUMBER = "param1";
+    private static final String ARG_SECTION_NUMBER = "section2";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -39,7 +40,7 @@ public class StatsFragment extends Fragment {
      * @param sectionNumber Parameter 1.
      * @return A new instance of fragment StatsFragment.
      */
-    // TODO: Rename and change types and number of parameters
+
     public static StatsFragment newInstance(int sectionNumber) {
         StatsFragment fragment = new StatsFragment();
         Bundle args = new Bundle();
@@ -63,8 +64,9 @@ public class StatsFragment extends Fragment {
         // Inflate the layout for this fragment
          View view = inflater.inflate(R.layout.fragment_stats, container, false);
 
-        /*TextView coffeeCounter =(TextView) view.findViewById(R.id.coffeeCounter);
-        coffeeCounter.setText(coffeeCounter.toString());*/
+        TextView coffeeCounterElement =(TextView) view.findViewById(R.id.coffeeCounter);
+        coffeeCounterElement.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        coffeeCounterElement.setText(String.valueOf(LogFragment.coffeeCount));
 
         return view;
     }
@@ -104,7 +106,6 @@ public class StatsFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onStatsFragmentInteraction(int position);
     }
 }

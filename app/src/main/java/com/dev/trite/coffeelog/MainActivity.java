@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity
                     LogFragment.OnFragmentInteractionListener,
                     StatsFragment.OnFragmentInteractionListener{
 
-    ImageView image;
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -52,21 +51,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    /*// make coffeecup clickable
-    public void addListenerOnButton() {
 
-        image = (ImageView) findViewById(R.id.coffeeCup);
-
-        image.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                //add click behaviour
-            }
-
-        });
-
-    }*/
 
     public void onLogFragmentInteraction(int position){
 
