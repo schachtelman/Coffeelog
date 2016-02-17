@@ -20,7 +20,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks,
+                    LogFragment.OnFragmentInteractionListener,
+                    StatsFragment.OnFragmentInteractionListener{
 
     ImageView image;
     /**
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    // make coffeecup clickable
+    /*// make coffeecup clickable
     public void addListenerOnButton() {
 
         image = (ImageView) findViewById(R.id.coffeeCup);
@@ -64,6 +66,14 @@ public class MainActivity extends AppCompatActivity
 
         });
 
+    }*/
+
+    public void onLogFragmentInteraction(int position){
+
+    }
+
+    public void onStatsFragmentInteraction(int position){
+
     }
 
     @Override
@@ -71,7 +81,7 @@ public class MainActivity extends AppCompatActivity
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, LogFragment.newInstance(position + 1))
                 .commit();
     }
 
@@ -125,17 +135,17 @@ public class MainActivity extends AppCompatActivity
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
+    /*public static class PlaceholderFragment extends Fragment {
+
+         //The fragment argument representing the section number for this
+         //fragment.
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
+
+         //Returns a new instance of this fragment for the given section
+        //number.
+
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
@@ -160,6 +170,6 @@ public class MainActivity extends AppCompatActivity
             ((MainActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
-    }
+    }*/
 
 }
