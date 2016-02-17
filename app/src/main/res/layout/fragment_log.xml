@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     tools:context="com.dev.trite.coffeelog.LogFragment">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/coffeeCup"
         android:layout_width="245dp"
         android:layout_height="348dp"
-        android:src="@drawable/coffeecup"
+        android:background="@drawable/coffeecup"
         android:layout_gravity="center" />
 
 </FrameLayout>

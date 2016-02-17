@@ -80,10 +80,19 @@ public class MainActivity extends AppCompatActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
+
+         if(position+1 == 1)  {
+             fragmentManager.beginTransaction()
                 .replace(R.id.container, LogFragment.newInstance(position + 1))
                 .commit();
+         }
+        else{
+             fragmentManager.beginTransaction()
+                     .replace(R.id.container, StatsFragment.newInstance(position + 1))
+                     .commit();
+         }
     }
+
 
     public void onSectionAttached(int number) {
         switch (number) {
