@@ -4,11 +4,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 
 /**
@@ -68,17 +70,23 @@ public class LogFragment extends Fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_log, container, false);
 
+        //initiate textView
+        final TextView coffeeCounterElement =(TextView) view.findViewById(R.id.coffeeCounter);
+        coffeeCounterElement.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        coffeeCounterElement.setText(String.valueOf(LogFragment.coffeeCount));
+
+        //create button and update coffeecount and textview on Click
         ImageButton coffeeCup = (ImageButton) view.findViewById(R.id.coffeeCup);
         coffeeCup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 coffeeCount++;
                 System.out.println(coffeeCount);
+                coffeeCounterElement.setText(String.valueOf(LogFragment.coffeeCount));
             }
         });
 
         return view;
     }
-
 
     /*// TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed( ) {
