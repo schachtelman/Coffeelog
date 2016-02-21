@@ -1,6 +1,7 @@
 package com.dev.trite.coffeelog;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +9,19 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.LimitLine;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
 
 
 /**
@@ -28,6 +41,8 @@ public class StatsFragment extends Fragment {
     private String mParam1;
 
     private OnFragmentInteractionListener mListener;
+
+
 
     public StatsFragment() {
         // Required empty public constructor
@@ -64,9 +79,46 @@ public class StatsFragment extends Fragment {
         // Inflate the layout for this fragment
          View view = inflater.inflate(R.layout.fragment_stats, container, false);
 
+        /**
         TextView coffeeCounterElement =(TextView) view.findViewById(R.id.coffeeCounter);
         coffeeCounterElement.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         coffeeCounterElement.setText(String.valueOf(LogFragment.coffeeCount));
+        **/
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        entries.add(new BarEntry(4f, 0));
+        entries.add(new BarEntry(3f, 1));
+        entries.add(new BarEntry(6f, 2));
+        entries.add(new BarEntry(1f, 3));
+        entries.add(new BarEntry(10f, 4));
+        entries.add(new BarEntry(7f, 5));
+        entries.add(new BarEntry(6f, 6));
+
+        BarDataSet dataSet = new BarDataSet(entries, "# of coffees consumed");
+
+        ArrayList<String> labels = new ArrayList<String>();
+        labels.add("Mon");
+        labels.add("Tue");
+        labels.add("Wed");
+        labels.add("Thu");
+        labels.add("Fri");
+        labels.add("Sat");
+        labels.add("Sun");
+
+        BarChart chart = (BarChart) view.findViewById(R.id.chart);
+
+        BarData data = new BarData(labels, dataSet);
+
+        chart.setData(data);
+
+        YAxis leftAxis = chart.getAxisLeft();
+        LimitLine ll = new LimitLine(5f, "Critical Coffee Consumption");
+        ll.setLineColor(Color.RED);
+        ll.setLineWidth(4f);
+        ll.setTextColor(Color.BLACK);
+        ll.setTextSize(12f);
+        leftAxis.addLimitLine(ll);
+
+        chart.animateY(800);
 
         return view;
     }

@@ -15,7 +15,7 @@
 
     <ImageButton
         android:id="@+id/coffeeCup"
-        android:layout_width="197dp"
+        android:layout_width="240dp"
         android:layout_height="280dp"
         android:background="@drawable/coffeecup"
         android:layout_gravity="center_horizontal|bottom"
