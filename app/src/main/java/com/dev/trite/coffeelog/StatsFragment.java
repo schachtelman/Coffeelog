@@ -85,13 +85,13 @@ public class StatsFragment extends Fragment {
         coffeeCounterElement.setText(String.valueOf(LogFragment.coffeeCount));
         **/
         ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(4f, 0));
-        entries.add(new BarEntry(3f, 1));
-        entries.add(new BarEntry(6f, 2));
-        entries.add(new BarEntry(1f, 3));
-        entries.add(new BarEntry(10f, 4));
-        entries.add(new BarEntry(7f, 5));
-        entries.add(new BarEntry(6f, 6));
+        entries.add(new BarEntry((float) LogFragment.coffeeCount[0], 0));
+        entries.add(new BarEntry((float) LogFragment.coffeeCount[1], 1));
+        entries.add(new BarEntry((float) LogFragment.coffeeCount[2], 2));
+        entries.add(new BarEntry((float) LogFragment.coffeeCount[3], 3));
+        entries.add(new BarEntry((float) LogFragment.coffeeCount[4], 4));
+        entries.add(new BarEntry((float) LogFragment.coffeeCount[5], 5));
+        entries.add(new BarEntry((float) LogFragment.coffeeCount[6], 6));
 
         BarDataSet dataSet = new BarDataSet(entries, "# of coffees consumed");
 

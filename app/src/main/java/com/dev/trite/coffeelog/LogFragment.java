@@ -1,6 +1,7 @@
 package com.dev.trite.coffeelog;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.util.Calendar;
+import java.util.StringTokenizer;
 
 
 /**
@@ -24,7 +28,9 @@ import android.widget.TextView;
 public class LogFragment extends Fragment
             implements View.OnClickListener{
 
-    public static int coffeeCount = 0;
+
+
+    public static int[] coffeeCount= { 0, 0, 0, 0, 0, 0, 0 };
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,18 +76,67 @@ public class LogFragment extends Fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_log, container, false);
 
+        //get current day of the week
+        Calendar c = Calendar.getInstance();
+        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+
+        if (Calendar.MONDAY == dayOfWeek) {
+            dayOfWeek = 0;
+        } else if (Calendar.TUESDAY == dayOfWeek) {
+            dayOfWeek = 1;
+        } else if (Calendar.WEDNESDAY == dayOfWeek) {
+            dayOfWeek = 2;
+        } else if (Calendar.THURSDAY == dayOfWeek) {
+            dayOfWeek = 3;
+        } else if (Calendar.FRIDAY == dayOfWeek) {
+            dayOfWeek = 4;
+        } else if (Calendar.SATURDAY == dayOfWeek) {
+            dayOfWeek = 5;
+        } else if (Calendar.SUNDAY == dayOfWeek) {
+            dayOfWeek = 6;
+        }
+
         //initiate textView
         final TextView coffeeCounterElement =(TextView) view.findViewById(R.id.coffeeCounter);
         coffeeCounterElement.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-        coffeeCounterElement.setText(String.valueOf(LogFragment.coffeeCount));
+        coffeeCounterElement.setText(String.valueOf(LogFragment.coffeeCount[dayOfWeek]));
+
+
+
+
 
         //create button and update coffeecount and textview on Click
         ImageButton coffeeCup = (ImageButton) view.findViewById(R.id.coffeeCup);
         coffeeCup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                coffeeCount++;
-                System.out.println(coffeeCount);
-                coffeeCounterElement.setText(String.valueOf(LogFragment.coffeeCount));
+                Calendar c = Calendar.getInstance();
+                int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+
+                if (Calendar.MONDAY == dayOfWeek) {
+                    dayOfWeek = 0;
+                    LogFragment.coffeeCount[0]++;
+                } else if (Calendar.TUESDAY == dayOfWeek) {
+                    dayOfWeek = 1;
+                    LogFragment.coffeeCount[1]++;
+                } else if (Calendar.WEDNESDAY == dayOfWeek) {
+                    dayOfWeek = 2;
+                    LogFragment.coffeeCount[2]++;
+                } else if (Calendar.THURSDAY == dayOfWeek) {
+                    dayOfWeek = 3;
+                    LogFragment.coffeeCount[3]++;
+                } else if (Calendar.FRIDAY == dayOfWeek) {
+                    dayOfWeek = 4;
+                    LogFragment.coffeeCount[4]++;
+                } else if (Calendar.SATURDAY == dayOfWeek) {
+                    dayOfWeek = 5;
+                    LogFragment.coffeeCount[5]++;
+                } else if (Calendar.SUNDAY == dayOfWeek) {
+                    dayOfWeek = 6;
+                    LogFragment.coffeeCount[6]++;
+                }
+                System.out.println(dayOfWeek);
+                System.out.println(LogFragment.coffeeCount[dayOfWeek]);
+                coffeeCounterElement.setText(String.valueOf(LogFragment.coffeeCount[dayOfWeek]));
             }
         });
 
